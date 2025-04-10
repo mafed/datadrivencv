@@ -1,0 +1,21 @@
+Here different skill types are in different sections,,
+section,skill,level
+Tech,R,4.5
+Tech,Git,3
+Tech,Python,2
+Tech,Linux,2
+Interest,Statistics,5
+Interest,Biology,4
+Interest,Software Engineering,3
+Interest,Physics,3
+R Package,tidyverse,4
+R Package,rmarkdown,3.5
+R Package,rms | Hmisc,3.5
+R Package,tidymodels,3
+R Package,purrr,3
+Language,Italian - mothertongue,5
+Language,English - C2 (CEFR),4.5
+Language,Dutch - B1,2.5
+Language,Spanish - A2,1.5
+Language,French - A2,1.5
+Language,German - A1,1
