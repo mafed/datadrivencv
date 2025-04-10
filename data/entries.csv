@@ -1,0 +1,10 @@
+section,title,loc,institution,start,end,description_1,description_2,description_3,in_resume
+section,title,loc,institution,start,end,description_1,description_2,description_3,in_resume
+education,"PhD. Candidate, Statistical Sciences","Bologna, Italy",University of Bologna,2011,2014,Thesis title: "Statistical Ordering Using Permutations",Developed complementary R package,,TRUE
+education,MSc Statistics and Informatics,"Padova, Italy",University of Padua,2008,2010,Thesis on permutational approach for multivariate ordering,,,TRUE
+research_positions,"PhD. Candidate, Biostatistical Engineer","Ghent, Belgium",University of Ghent,2014,"''2016''",Developed Shiny application and models for differential abundances analyses of microbiome data,,,TRUE
+research_positions,Research Assistant,"Ghent, Belgium",University of Ghent,2012,2014,"Developed mathematical model to understand association between molecule parts, bioactivity, and transcriptomics data",,,TRUE
+research_positions,Undergraduate Researcher,"Padova, Italy",University of Padua,2010,2012,"Teaching assistant for the course of 'Statistics for Political Sciences' in the department of Political Sciences",,,FALSE
+research_positions,Undergraduate Researcher,"Padova, Italy",University of Padua,2010,2012,Research assignment related to MSc thesis,Deployment of statistical model for an industry partner,,FALSE
+industry_positions,Principal Data Scientist,Basel,F. Hoffmann-La Roche AG,March 2016,,,,,TRUE
+academic_articles,My profile on Google Scholar: https://scholar.google.com/citations?hl=en&user=g5KymxIAAAAJ,,,,,,,,TRUE
