@@ -1,0 +1,209 @@
+---
+title: "Federico Mattiello's CV"
+author: Federico Mattiello
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+output:
+  pagedown::html_resume:
+    css: ['dd_cv.css', 'resume']
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(magrittr) # For the pipe
+source("cv_printing_functions.r")
+# source("helper_functions.r") ## from MLeary, not useful
+
+# Read in all data and initialize a CV printer object
+CV <- create_CV_object(
+  data_location = "./data/",  
+  pdf_mode = params$pdf_mode
+)
+
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_contact_info()
+```
+
+```{r profile-photo, out.width=100}
+# Build interactive network of positions colored by section
+# and connected if they occurred in the same year
+# datadrivencv::build_network_logo(CV$entries_data)
+knitr::include_graphics("./data/new-profile-photo.jpg")
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+if(params$pdf_mode){
+  cat("View this CV online with links at _nickstrayer.me/datadrivencv/_")
+} else {
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/nstrayer/cv/raw/master/strayer_cv.pdf)")
+}
+```
+
+
+
+
+Tech skills {#skills}
+--------------------------------------------------------------------------------
+```{r codingskills, dev.args = list(bg = 'transparent')}
+CV$skills %>% dplyr::filter(section == "Tech") %>% print_skill_bars()
+# function from helper_functions.R
+# build_skill_bars(CV$skills, "Tech")
+```
+
+R skills {#rpackages}
+--------------------------------------------------------------------------------
+```{r rskills}
+CV$skills %>% dplyr::filter(section == "R Package") %>% print_skill_bars()
+```
+
+Learning Focus {#interests}
+--------------------------------------------------------------------------------
+```{r learningfocus}
+CV$skills %>% dplyr::filter(section == "Interest") %>% print_skill_bars()
+```
+
+
+
+
+Main
+================================================================================
+
+Federico Mattiello {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+CV %<>% print_text_block("intro") 
+```
+
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('education')
+```
+
+
+
+Research {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('research_positions')
+```
+
+<br>
+<br>
+<br>
+
+
+Industry {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+# CV %<>% print_text_block('industry_experience_aside')
+```
+:::
+
+```{r}
+CV %<>% print_section('industry_positions')
+```
+
+<!-- These breaks just force a new page so section doesn't get cut off -->
+<br>
+<br>
+<br>
+
+<!-- Teaching Experience {data-icon=chalkboard-teacher} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ::: aside -->
+<!-- ```{r} -->
+<!-- CV %<>% print_text_block('teaching_experience_aside') -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- ```{r} -->
+<!-- CV %<>% print_section('teaching_positions') -->
+<!-- ``` -->
+
+<!-- Selected Data Science Writing {data-icon=chart-line} -->
+<!-- Selected Press (About)  {data-icon=newspaper} -->
+<!-- Selected Press (By)  {data-icon=newspaper} -->
+
+
+Publications {data-icon=book}
+--------------------------------------------------------------------------------
+::: aside
+Languages {data-icon=none}
+--------------------------------------------------------------------------------
+```{r languages}
+CV$skills %>% dplyr::filter(section == "Language") %>% print_skill_bars()
+```
+:::
+
+
+```{r}
+CV %<>% print_section('academic_articles')
+```
+
+<br>
+<br>
+<br>
+
+```{r}
+CV %<>% print_text_block('industry_experience_aside')
+```
+
+```{r}
+CV %<>% print_text_block('teaching_experience_aside')
+```
+
+```{r}
+CV %<>% print_links()
+```
+
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
+
+The source code is available [on github.com/mafed/datadrivencv](https://github.com/mafed/datadrivencv/).
+
+Last updated on `r Sys.Date()`.
